@@ -48,30 +48,18 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    @if (session('thongbao'))
-                        <div class="alert alert-success">
-                            {{ session('thongbao') }}
-                        </div>
-                    @endif
-                    <form action="create" method="POST" role="form">  
-                      <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />                                
+                    <form action="" method="POST" role="form">                                    
                         <div class="form-group">
                             <label for="">Title</label>
-                            <input name="title" type="text" class="form-control" id="" placeholder="Input field">
+                            <input type="text" class="form-control" id="" placeholder="Input field">
                             <br>
-                         
+
                             <label>Category</label>
                             <select name="category" class="form-control">
-                             <?php 
-                                foreach ($category as $key => $value)
-                                {
-                                    echo "<option value ='$value[id]'> $value[name]</option>";
-                                    
-                                }
-
-                              ?>
-                           </select>
-                            
+                                <option value="0">Love</option>
+                                <option value="1">Romantic</option>
+                                <option value="2">Bill</option>
+                            </select>
 
                             <label for="">Content</label>
                             <textarea name="content" rows="7" class="form-control"></textarea>
