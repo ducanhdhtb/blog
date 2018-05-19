@@ -18,9 +18,10 @@ class Posts extends Migration
             $table->increments('id');
             $table->string('title');
             $table->longtext('content');
+            $table->longtext('summary');
             $table->boolean('status')->default(0);
-            $table->integer('user_id')->unsigned();
-            $table->integer('categories_id')->unsigned();
+            #$table->integer('user_id')->unsigned();
+            $table->integer('category_id')->unsigned();
             $table->timestamps();
      
         });
