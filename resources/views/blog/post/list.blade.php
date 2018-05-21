@@ -30,10 +30,7 @@
 					<td width="200px"> <?php echo  substr($value['summary'], 0, 100)?></td>
 					<td> <?php echo  substr($value['content'], 0, 300)?> </td>					
 					<td>
-						<select style="background-color: #bf5329;color:black;border-radius:5px;border:red;font-weight:bold;cursor: pointer;padding: 9px 12px" name="" id="input" required="required">
-							<option value="">Visable</option>
-							<option value="">Hide</option>
-						</select>
+						<a href="view/<?php echo $value['id']; ?>/<?php echo $value['title']; ?>.html ">Link</a>
 					</td>
 					<td><a href="edit/<?php echo $value['id'];  ?>" ><button type="button" class="btn btn-danger">Edit</button></a>	</td>
 					<td><a href="delete/<?php echo $value['id'];  ?>"> <button type="button" class="btn btn-success">Delete</button> </a></td>

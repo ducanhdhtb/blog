@@ -14,8 +14,10 @@ class PostController extends FrontendController
      */
 	public function listAction(Request $request)
 	{
+		#$a=array("a"=>"Dog", "b"=>"Cat", "c"=>"Horse");
 		$post = Post::all();
 		return view('blog.post.list',compact('post'));
+		#return view('blog.post.test', array("a"=>"Dog", "b"=>"Cat", "c"=>"Horse"));
 	}
 
     /**
@@ -44,7 +46,7 @@ class PostController extends FrontendController
         }
 
         $categories = Category::all();
-        return view('blog.post.edit',compact('post','categories'));
+        return view('blog.post.edit', array ('post' => $post, 'categories' => $categories));
 	}
 
     /**
@@ -53,9 +55,11 @@ class PostController extends FrontendController
      */
 	public function saveAction(Request $request)
 	{
+
         $id = $request->id;
         $post = ($id) ? Post::find($id)
                         : new Post();
+
         $post->title = $request->title;
         $post->status = $request->status;
         $post->summary = $request->summary;
