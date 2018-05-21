@@ -24,7 +24,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function showPost()
     {
         $category = Category::all();
         return view('home', compact('category'));
