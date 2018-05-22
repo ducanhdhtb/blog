@@ -16,11 +16,14 @@
 Auth::routes();
 
 Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@showPost']);
+Route::get('/', ['as' => 'home', 'uses' => 'HomeController@showPost']);
 //login user, admin, vendor,.... customer, account
 Route::get('user/login', 'UserController@loginAction');
 Route::post('user/loginPost', 'UserController@loginPostAction');
 
-Route::get('post',  'Blog\PostController@listAction')->name('postList');
+//Route::get('post/{slug}',  'Blog\PostController@viewAction')->name('postView');
+
+// Route::get('post',  'Blog\PostController@listAction')->name('postIndex');
 // Show all posts 
 Route::get('post/list',  'Blog\PostController@listAction')->name('postList');
 // Show  detail post with url ex: post/view/id/123 and /things-they-say
@@ -42,7 +45,7 @@ Route::get('category/list', 'Blog\CategoryController@listAction');
 // Show detail category and list post in category
 // Ex: category/view/id/123 and /spiralbound
 
-Route::get('category/view', 'Blog\CategoryController@viewAction');
+#Route::get('category/view', 'Blog\CategoryController@viewAction');
 # return view new.blade.php
 Route::get('category/new', 'Blog\CategoryController@newAction');
 #Take data from  new.blade.php
@@ -55,3 +58,8 @@ Route::post('category/edit/{id}', 'Blog\CategoryController@editActionPost');
 
 Route::get('category/delete/{id}', 'Blog\CategoryController@deleteAction');
 Route::post('category/save', 'Blog\CategoryController@saveAction');
+
+
+
+
+Route::get('category/{id}', 'Blog\CategoryController@viewAction');

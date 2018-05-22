@@ -19,7 +19,7 @@
 					<td>Category_name</td>
 					<td>Edit Category</td>
 					<td>Delete Category</td>
-					<td>Lock Category</td>
+					<td>View</td>
 				</tr>
 				<?php foreach ($category as  $value) {?>					
 				<tr>	
@@ -29,10 +29,7 @@
 					<td><a href="edit/{{$value['id']}}" ><button type="button" class="btn btn-danger">Edit</button></a>	</td>
 					<td><a href="delete/{{$value['id']}}"> <button type="button" class="btn btn-success">Delete</button> </a></td>
 					<td>
-						<select style="padding:5px;background: red;color:white;border-radius:5px;border:red" name="" id="input" required="required">
-							<option value="">Normal</option>
-							<option value="">lock</option>
-						</select>
+						<a href="{{$value['id']}}">View post...</a>
 					</td>
 				</tr>
 				 <?php } ?>

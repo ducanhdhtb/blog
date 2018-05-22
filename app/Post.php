@@ -11,6 +11,6 @@ class Post extends Model
   
     public function getCategory()
     {
-    	return $this -> belongsTo('App\Category','category_id','id');
+    	return $this -> belongsTo('App\Category');
     }
 }

@@ -12,12 +12,12 @@ class PostController extends FrontendController
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
+    // Convert Viet Nam string to English String
+
 	public function listAction(Request $request)
 	{
-		#$a=array("a"=>"Dog", "b"=>"Cat", "c"=>"Horse");
-		$post = Post::all();
-		return view('blog.post.list',compact('post'));
-		#return view('blog.post.test', array("a"=>"Dog", "b"=>"Cat", "c"=>"Horse"));
+		$posts = Post::all();
+		return view('blog.post.list',compact('posts'));
 	}
 
     /**
@@ -61,6 +61,7 @@ class PostController extends FrontendController
                         : new Post();
 
         $post->title = $request->title;
+        //$post->url = ;
         $post->status = $request->status;
         $post->summary = $request->summary;
         $post->content = $request->content;
@@ -83,8 +84,12 @@ class PostController extends FrontendController
 
 	public function viewAction($id)
     {
-        $post = Post::find($id);
-        return view('blog.post.view',compact('post'));
+        /*$post = Post::where('slug', '=', $slug)->first();
+        if (!$post) {
+
+        }  */ 
+        $post = Post::find($id);   
+        return view('blog.post.view', array( "post" => $post));
     }
 
 }

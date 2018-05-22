@@ -23,17 +23,17 @@
 					<td>Delete post</td>
 				</tr>
 				<?php 
-					foreach ($post as $value) {?>
+					foreach ($posts as $post) {?>
 				<tr>	
-					<td width="50px"><?php echo $value['id'] ?></td>
-					<td width="50px"><?php echo $value['title'] ?> </td>
-					<td width="200px"> <?php echo  substr($value['summary'], 0, 100)?></td>
-					<td> <?php echo  substr($value['content'], 0, 300)?> </td>					
+					<td width="50px"><?php echo $post['id'] ?></td>
+					<td width="50px"><?php echo $post['title'] ?> </td>
+					<td width="200px"> <?php echo  substr($post['summary'], 0, 100)?></td>
+					<td> <?php echo  substr($post['content'], 0, 300)?> </td>					
 					<td>
-						<a href="view/<?php echo $value['id']; ?>/<?php echo $value['title']; ?>.html ">Link</a>
+						<a href="view/<?php echo $post['id']; ?>/<?php echo str_slug($post['title']); ?>.html ">Link</a>
 					</td>
-					<td><a href="edit/<?php echo $value['id'];  ?>" ><button type="button" class="btn btn-danger">Edit</button></a>	</td>
-					<td><a href="delete/<?php echo $value['id'];  ?>"> <button type="button" class="btn btn-success">Delete</button> </a></td>
+					<td><a href="edit/<?php echo $post['id'];  ?>" ><button type="button" class="btn btn-danger">Edit</button></a>	</td>
+					<td><a href="delete/<?php echo $post['id'];  ?>"> <button type="button" class="btn btn-success">Delete</button> </a></td>
 					
 				</tr>
 				<?php 

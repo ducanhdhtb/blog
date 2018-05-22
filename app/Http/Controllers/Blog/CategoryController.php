@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Blog;
 use App\Category;
 use App\Post;
 
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller as FrontendController;
 use Illuminate\Http\Request;
 
@@ -46,10 +47,7 @@ class CategoryController extends FrontendController
         $category->save();
         return redirect()->back()->with('flash','Add Successfully');
     }
-    public function viewAction()
-    {
-
-    }
+    
     #return view edit action with id to update
     public function editAction(Request $request, $id)
     {
@@ -75,6 +73,13 @@ class CategoryController extends FrontendController
     #
     public function saveAction()
     {
+
+    }
+
+    public function viewAction($id)
+    {
+        $post = DB::table('posts')->where('category_id' , '=' ,$id )->get();
+        return view('blog.category.choice', compact('post'));
 
     }
     
