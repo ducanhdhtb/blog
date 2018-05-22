@@ -1,6 +1,7 @@
 @extends('../layouts.app')
 
 @section('content')
+<?php echo 'test'; ?>
 	<div class="container">	
 			<table class="table table-hover" >
 			<thead>

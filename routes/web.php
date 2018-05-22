@@ -47,9 +47,9 @@ Route::get('category/list', 'Blog\CategoryController@listAction');
 
 #Route::get('category/view', 'Blog\CategoryController@viewAction');
 # return view new.blade.php
-Route::get('category/new', 'Blog\CategoryController@newAction');
+Route::get('category/new', 'Blog\CategoryController@newAction')->name('view_add');
 #Take data from  new.blade.php
-Route::post('category/new', 'Blog\CategoryController@newActionPost');
+Route::post('category/new', 'Blog\CategoryController@newActionPost')->name('add_category');
 
 #return view category
 Route::get('category/edit/{id}', 'Blog\CategoryController@editAction');
@@ -57,9 +57,10 @@ Route::get('category/edit/{id}', 'Blog\CategoryController@editAction');
 Route::post('category/edit/{id}', 'Blog\CategoryController@editActionPost');
 
 Route::get('category/delete/{id}', 'Blog\CategoryController@deleteAction');
-Route::post('category/save', 'Blog\CategoryController@saveAction');
+Route::post('category/save', 'Blog\CategoryController@saveAction')->name('save_category');
 
 
 
 
 //Route::get('category/{slogan}', 'Blog\CategoryController@viewAction');
+Route::get('category/view/{id}', 'Blog\PostController@viewAction');

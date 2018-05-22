@@ -38,7 +38,6 @@ class PostController extends FrontendController
 	public function editAction($id)
 	{
 	    if (!$id) {
-
         }
 
         $post = Post::find($id);
@@ -89,11 +88,13 @@ class PostController extends FrontendController
         if (!$post) {
 
         }  */ 
-        //$posts = DB::table('posts')->where('category_id' , '=' ,$id )->get();
+        $tmp = DB::table('posts')->where('category_id' , '=' ,$id )->get();
         //$posts = $post->toArray();
-        //$posts = json_decode($post, true);
-        $posts = Post::find($id);
-        return view('blog.post.view', array( "posts" => $posts));
+        $posts = json_decode($tmp, true);
+
+        //dd($posts);
+        //$posts = Post::find($id);
+        return view('blog.post.list', array( "posts" => $posts));
     }
 
 }

@@ -4,6 +4,7 @@
 		<div class="container">	
 			<div class="col-md-3">	
 				@if(Session::has('flash1'))<span id="id"><u>{{ Session::get('flash1') }}@endif</u>
+				
 				<form action="<?php echo $category['id']; ?>" method="POST" role="form">
 					{{ csrf_field()}}
 					<legend>Form Add Category</legend>

@@ -31,39 +31,55 @@ class CategoryController extends FrontendController
         $category = Category::all();
         return view('blog.category.list', compact('category'));
     }
-    #Return view new.blade.php
+    #Return view new.blade.php+
     public function newAction()
-    {
-        $category = Category::all();
-        return view('blog.category.new', compact('category'));
+    {        
+        return view('blog.category.form' );
 
     }
-    #Take data from new.blade.php
-    public function newActionPost(Request $request)
-    {
-        #
-        $category = new Category();
-        $category->name = $request->name;
-        $category->save();
-        return redirect()->back()->with('flash','Add Successfully');
-    }
-    
-    #return view edit action with id to update
+    //return view edit action with id to update
     public function editAction(Request $request, $id)
     {
             $category = Category::find($id);
-           return view('blog.category.edit', compact('category'));
+            //var_dump($category);
+           return view('blog.category.form', compact('category'));
     }
-    #Take data from edit form
-    public function editActionPost(Request $request,$id )
+
+   
+    public function saveAction(Request $request)
     {
-        $category = Category::find($id);
-        $category->name = $request->name;
-        $category->save();
-        return redirect()->back()->with('flash1','update Successfully');
+        $id = $request->id;
+        if(isset($id))
+        {
+            $category = Category::find($id);
+            $category->name = $request->name;
+            $category->save();
+            echo "Update Successfully!";
+            return redirect()->back();
+        }
+        else
+        {
+            $category = new Category();
+            $category->name = $request->name;
+            $category->save();
+            echo "Save successfully!";
+            return redirect()->back();
+        }
+     
+        
+    }
+
+    public function viewAction($id)
+    {
+        echo "Processing with category id : ". $id."<br>";
+        /*$posts = DB::table('posts')->where('category_id' , '=' ,$id )->get();
+        return view('blog.post.list', compact('posts'));*/
+        $tmp = DB::table('posts')->where('category_id' , '=' ,$id )->get();
+        $posts = json_decode($tmp, true);
+
+        return view('blog.post.list', compact('posts'));
 
     }
-    #
     public function deleteAction($id)
     {
             $category = Category::find($id);
@@ -71,19 +87,5 @@ class CategoryController extends FrontendController
             return redirect()->back()->with('flash','Delete successfully');
     }
     #
-    public function saveAction()
-    {
-
-    }
-
-    public function viewAction($id)
-    {
-        echo "string";
-        die();
-        $posts = DB::table('posts')->where('category_id' , '=' ,$id )->get();
-        return view('blog.post.list', compact('posts'));
-
-    }
-    
     
 }

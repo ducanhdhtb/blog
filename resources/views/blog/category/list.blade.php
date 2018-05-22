@@ -28,8 +28,8 @@
 					<td><b><?php echo $value['name']; ?></b></td>
 					<td><a href="edit/{{$value['id']}}" ><button type="button" class="btn btn-danger">Edit</button></a>	</td>
 					<td><a href="delete/{{$value['id']}}"> <button type="button" class="btn btn-success">Delete</button> </a></td>
-					<td>
-						<a href="/category/{{ $value['id'] }}">Post List...</a>
+					<td>					
+						<a href="/category/view/{{$value['id']}}">View Post</a>						
 					</td>
 				</tr>
 				 <?php } ?>
