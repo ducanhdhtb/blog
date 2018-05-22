@@ -78,8 +78,10 @@ class CategoryController extends FrontendController
 
     public function viewAction($id)
     {
-        $post = DB::table('posts')->where('category_id' , '=' ,$id )->get();
-        return view('blog.category.choice', compact('post'));
+        echo "string";
+        die();
+        $posts = DB::table('posts')->where('category_id' , '=' ,$id )->get();
+        return view('blog.post.list', compact('posts'));
 
     }
     

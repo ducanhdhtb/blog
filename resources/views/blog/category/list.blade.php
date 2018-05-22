@@ -29,7 +29,7 @@
 					<td><a href="edit/{{$value['id']}}" ><button type="button" class="btn btn-danger">Edit</button></a>	</td>
 					<td><a href="delete/{{$value['id']}}"> <button type="button" class="btn btn-success">Delete</button> </a></td>
 					<td>
-						<a href="{{$value['id']}}">View post...</a>
+						<a href="/category/{{ $value['id'] }}">Post List...</a>
 					</td>
 				</tr>
 				 <?php } ?>

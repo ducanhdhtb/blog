@@ -27,7 +27,7 @@ Route::post('user/loginPost', 'UserController@loginPostAction');
 // Show all posts 
 Route::get('post/list',  'Blog\PostController@listAction')->name('postList');
 // Show  detail post with url ex: post/view/id/123 and /things-they-say
-Route::get('post/view/{id}/{tieudekhongdau}.html', 'Blog\PostController@viewAction')->name('postView');
+Route::get('post/view/{id}', 'Blog\PostController@viewAction')->name('postView');
 // New post redirect to Edit with flag new ex: post/new
 #return view add blog
 Route::get('post/new', 'Blog\PostController@newAction')->name('postNew');
@@ -62,4 +62,4 @@ Route::post('category/save', 'Blog\CategoryController@saveAction');
 
 
 
-Route::get('category/{id}', 'Blog\CategoryController@viewAction');
+//Route::get('category/{slogan}', 'Blog\CategoryController@viewAction');

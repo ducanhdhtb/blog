@@ -5,6 +5,7 @@ use App\Category;
 use App\Post as Post;
 use App\Http\Controllers\Controller as FrontendController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends FrontendController
 {
@@ -88,8 +89,11 @@ class PostController extends FrontendController
         if (!$post) {
 
         }  */ 
-        $post = Post::find($id);   
-        return view('blog.post.view', array( "post" => $post));
+        //$posts = DB::table('posts')->where('category_id' , '=' ,$id )->get();
+        //$posts = $post->toArray();
+        //$posts = json_decode($post, true);
+        $posts = Post::find($id);
+        return view('blog.post.view', array( "posts" => $posts));
     }
 
 }

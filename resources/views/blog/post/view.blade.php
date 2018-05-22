@@ -1,9 +1,20 @@
 @extends('../layouts.app')
 
 @section('content')
-    <h2> {{$post['title']}}</h2>
-    <hr>
-    <h2> {{$post['summary']}}</h2>
-    <hr>
-    <h2> {{$post['content']}}</h2>
+<div class="container">
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">{{$posts ['title']}}</h3>
+		</div>
+
+		<div class="panel-body">
+			{{$posts['summary']}}
+		</div>
+		<div class="panel-body">
+			{{$posts['content']}}
+		</div>
+	</div>
+
+</div>
+
 @endsection
