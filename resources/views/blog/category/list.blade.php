@@ -1,9 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-		<div class="container">		
+		<div class="container">
+			<b>@if(Session::has('notification'))<span id="id">{{ Session::get('notification') }}@endif</b>
+							
 			<table class="table table-hover" >
 			<thead>
+
 				<tr>
 					<th>Category List</th>
 					<th>@if(Session::has('flash'))<span id="id">{{ Session::get('flash') }}@endif	</span></th>
@@ -28,8 +31,9 @@
 					<td><b><?php echo $value['name']; ?></b></td>
 					<td><a href="edit/{{$value['id']}}" ><button type="button" class="btn btn-danger">Edit</button></a>	</td>
 					<td><a href="delete/{{$value['id']}}"> <button type="button" class="btn btn-success">Delete</button> </a></td>
-					<td>					
-						<a href="/category/view/{{$value['id']}}">View Post</a>						
+					<td>
+						<a href="/category/view/{{$value['id']}}">Links..</a>
+					
 					</td>
 				</tr>
 				 <?php } ?>

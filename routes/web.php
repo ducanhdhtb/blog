@@ -26,8 +26,11 @@ Route::post('user/loginPost', 'UserController@loginPostAction');
 // Route::get('post',  'Blog\PostController@listAction')->name('postIndex');
 // Show all posts 
 Route::get('post/list',  'Blog\PostController@listAction')->name('postList');
+Route::get('category/list/{id}',  'Blog\PostController@viewlist')->name('CategoryList');
 // Show  detail post with url ex: post/view/id/123 and /things-they-say
-Route::get('post/view/{id}', 'Blog\PostController@viewAction')->name('postView');
+Route::get('post/view/{slug}', 'Blog\PostController@viewAction')->name('postView');
+
+
 // New post redirect to Edit with flag new ex: post/new
 #return view add blog
 Route::get('post/new', 'Blog\PostController@newAction')->name('postNew');
@@ -58,9 +61,10 @@ Route::post('category/edit/{id}', 'Blog\CategoryController@editActionPost');
 
 Route::get('category/delete/{id}', 'Blog\CategoryController@deleteAction');
 Route::post('category/save', 'Blog\CategoryController@saveAction')->name('save_category');
+Route::get('category/view/{slug}', 'Blog\CategoryController@viewAction')->name('view_category');
 
 
 
 
 //Route::get('category/{slogan}', 'Blog\CategoryController@viewAction');
-Route::get('category/view/{id}', 'Blog\PostController@viewAction');
+#Route::get('category/view/{id}', 'Blog\PostController@viewAction');

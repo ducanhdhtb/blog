@@ -28,6 +28,7 @@ class CategoryController extends FrontendController
     #Show category
     public function listAction()
     {
+        echo "string";
         $category = Category::all();
         return view('blog.category.list', compact('category'));
     }
@@ -54,8 +55,7 @@ class CategoryController extends FrontendController
             $category = Category::find($id);
             $category->name = $request->name;
             $category->save();
-            echo "Update Successfully!";
-            return redirect()->back();
+            return redirect()->back()->with('flash','Update Successfully!');
         }
         else
         {
@@ -69,15 +69,12 @@ class CategoryController extends FrontendController
         
     }
 
-    public function viewAction($id)
+    public function viewAction($slug)
     {
-        echo "Processing with category id : ". $id."<br>";
-        /*$posts = DB::table('posts')->where('category_id' , '=' ,$id )->get();
-        return view('blog.post.list', compact('posts'));*/
-        $tmp = DB::table('posts')->where('category_id' , '=' ,$id )->get();
-        $posts = json_decode($tmp, true);
+        $category = Category::where('slug', '=' , $slug)->first();
 
-        return view('blog.post.list', compact('posts'));
+        $posts = $category->posts;
+        return view('blog.category.view',compact('category','posts'));
 
     }
     public function deleteAction($id)

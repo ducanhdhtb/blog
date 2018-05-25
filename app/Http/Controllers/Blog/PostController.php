@@ -17,7 +17,8 @@ class PostController extends FrontendController
 
 	public function listAction(Request $request)
 	{
-		$posts = Post::all();
+        $url = route('postList' /*['id' => 1]*/);
+        $posts = Post::all();
 		return view('blog.post.list',compact('posts'));
 	}
 
@@ -57,8 +58,7 @@ class PostController extends FrontendController
 	{
 
         $id = $request->id;
-        $post = ($id) ? Post::find($id)
-                        : new Post();
+        $post = ($id) ? Post::find($id): new Post();
 
         $post->title = $request->title;
         //$post->url = ;
@@ -82,19 +82,27 @@ class PostController extends FrontendController
 		return redirect()->route('postList');
 	}
 
-	public function viewAction($id)
+	public function viewAction($slug)
     {
-        /*$post = Post::where('slug', '=', $slug)->first();
-        if (!$post) {
+    
+        $post = Post::where('slug', '=' , $slug)->first();
+    
+        return view('blog.post.view', compact('post'));
+    }
 
-        }  */ 
+    public function viewlist(Request $request, $id)                                 
+    {
+
         $tmp = DB::table('posts')->where('category_id' , '=' ,$id )->get();
+        
         //$posts = $post->toArray();
         $posts = json_decode($tmp, true);
-
-        //dd($posts);
-        //$posts = Post::find($id);
-        return view('blog.post.list', array( "posts" => $posts));
+        if ($posts == Null) {
+            # code...
+            echo "Post is empty";
+            return redirect()->back()->with('notification','There is no post in this category');
+        }               
+        return view('blog.post.list',compact('posts'));
     }
 
 }

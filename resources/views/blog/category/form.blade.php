@@ -6,7 +6,7 @@
 				@if(Session::has('flash'))<span id="id"><u>{{ Session::get('flash') }}@endif</u>
 				<form action="{{ route('save_category') }}" method="POST" role="form">
 					{{ csrf_field()}}
-					 <input type="hidden" name="id" value="{{(!empty($category['id']) ? $category['id'] : '')}}" />
+					 <input type="hidden" name="id" value="<?php if(isset($category)){echo $category['id'];} ?>" />
 					<legend>Form Add Category</legend>
 				
 					<div class="form-group">

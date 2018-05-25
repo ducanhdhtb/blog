@@ -1,7 +1,7 @@
 @extends('../layouts.app')
 
 @section('content')
-<?php echo 'test'; ?>
+
 	<div class="container">	
 			<table class="table table-hover" >
 			<thead>
@@ -31,7 +31,7 @@
 					<td width="200px"> <?php echo  substr($post['summary'], 0, 100)?></td>
 					<td> <?php echo  substr($post['content'], 0, 300)?> </td>					
 					<td>
-						<a href="view/<?php echo $post['id']; ?> ">Continue...</a>
+						<a href="view/<?php echo $post['slug']; ?> ">Continue...</a>
 					</td>
 					<td><a href="edit/<?php echo $post['id'];  ?>" ><button type="button" class="btn btn-danger">Edit</button></a>	</td>
 					<td><a href="delete/<?php echo $post['id'];  ?>"> <button type="button" class="btn btn-success">Delete</button> </a></td>

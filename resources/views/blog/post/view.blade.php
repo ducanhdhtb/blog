@@ -4,14 +4,14 @@
 <div class="container">
 	<div class="panel panel-info">
 		<div class="panel-heading">
-			<h3 class="panel-title">{{$posts ['title']}}</h3>
+			<h3 class="panel-title">{{$post['title']}}</h3>
 		</div>
 
 		<div class="panel-body">
-			{{$posts['summary']}}
+			{{$post['summary']}}
 		</div>
 		<div class="panel-body">
-			{{$posts['content']}}
+			{{$post['content']}}
 		</div>
 	</div>
 
