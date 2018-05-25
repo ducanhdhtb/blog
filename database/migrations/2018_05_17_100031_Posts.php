@@ -23,7 +23,7 @@ class Posts extends Migration
             $table->string('url')->nullable();
             $table->integer('category_id')->unsigned();
             $table->timestamps();
-     
+
         });
     }
 
@@ -35,6 +35,6 @@ class Posts extends Migration
     public function down()
     {
         //
-         Schema::dropIfExists('posts');
+        Schema::dropIfExists('posts');
     }
 }

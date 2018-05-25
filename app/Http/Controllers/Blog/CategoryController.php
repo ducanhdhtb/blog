@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Blog;
+
 use App\Category;
 use App\Post;
 
@@ -21,68 +22,70 @@ class CategoryController extends FrontendController
     }
 
     /**
-     * Show the application dashboard.
+     * Show the list view
      *
-     * @return \Illuminate\Http\Response
+     * @return log/category/list
      */
-    #Show category
     public function listAction()
     {
         echo "string";
         $category = Category::all();
         return view('blog.category.list', compact('category'));
     }
-    #Return view new.blade.php+
+
+    /**
+     * Show the form add
+     * */
     public function newAction()
-    {        
-        return view('blog.category.form' );
+    {
+        return view('blog.category.form');
 
     }
+
     //return view edit action with id to update
     public function editAction(Request $request, $id)
     {
-            $category = Category::find($id);
-            //var_dump($category);
-           return view('blog.category.form', compact('category'));
+        $category = Category::find($id);
+        //var_dump($category);
+        return view('blog.category.form', compact('category'));
     }
 
-   
+
     public function saveAction(Request $request)
     {
         $id = $request->id;
-        if(isset($id))
-        {
+        if (isset($id)) {
             $category = Category::find($id);
             $category->name = $request->name;
             $category->save();
-            return redirect()->back()->with('flash','Update Successfully!');
-        }
-        else
-        {
+            return redirect()->back()->with('flash', 'Update Successfully!');
+        } else {
             $category = new Category();
             $category->name = $request->name;
+            $category->slug = $request->slug;
             $category->save();
             echo "Save successfully!";
             return redirect()->back();
         }
-     
-        
+
+
     }
 
     public function viewAction($slug)
     {
-        $category = Category::where('slug', '=' , $slug)->first();
+        $category = Category::where('slug', '=', $slug)->first();
 
         $posts = $category->posts;
-        return view('blog.category.view',compact('category','posts'));
+        return view('blog.category.view', compact('category', 'posts'));
 
     }
+
     public function deleteAction($id)
     {
-            $category = Category::find($id);
-            $category->delete();
-            return redirect()->back()->with('flash','Delete successfully');
+        $category = Category::find($id);
+        $category->delete();
+        return redirect()->back()->with('flash', 'Delete successfully');
     }
     #
-    
+
 }

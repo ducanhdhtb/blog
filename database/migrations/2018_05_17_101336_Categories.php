@@ -16,9 +16,10 @@ class Categories extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->string('name');
-            
+
         });
     }
+
     /**
      * Reverse the migrations.
      *

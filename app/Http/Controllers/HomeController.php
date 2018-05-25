@@ -33,15 +33,15 @@ class HomeController extends Controller
     public function create(Request $request)
     {
         $post = new Post();
-        $post->title = $request -> title;
+        $post->title = $request->title;
         $post->content = $request->content;
-        $post->category_id = $request -> category;
+        $post->category_id = $request->category;
         $post->save();
         echo "Success";
-        return redirect()->back()->with('thongbao','Add successfully!');
-        
-       /* $category = new Category();
-        $category->id = $request->category;*/
-        
+        return redirect()->back()->with('thongbao', 'Add successfully!');
+
+        /* $category = new Category();
+         $category->id = $request->category;*/
+
     }
 }

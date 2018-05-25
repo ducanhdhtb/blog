@@ -1,43 +1,49 @@
 @extends('layouts.app')
 
 @section('content')
-		<div class="container">
-			<b>@if(Session::has('notification'))<span id="id">{{ Session::get('notification') }}@endif</b>
-							
-			<table class="table table-hover" >
-			<thead>
+    <div class="container">
+        <b>@if(Session::has('notification'))<span id="id">{{ Session::get('notification') }}@endif</b>
 
-				<tr>
-					<th>Category List</th>
-					<th>@if(Session::has('flash'))<span id="id">{{ Session::get('flash') }}@endif	</span></th>
-					<th></th>
-					<th></th>
-					<th><a href="new" style="border:1px solid black;padding:10px 8px;cursor: pointer;background: #2ab27b;color:white; ">Add Category</a></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>Select</td>
-					<td>Id_Category</td>
-					<td>Category_name</td>
-					<td>Edit Category</td>
-					<td>Delete Category</td>
-					<td>View</td>
-				</tr>
-				<?php foreach ($category as  $value) {?>					
-				<tr>	
-					<td><input type="checkbox" name=""></td>
-					<td><?php echo $value['id'];	?></td>
-					<td><b><?php echo $value['name']; ?></b></td>
-					<td><a href="edit/{{$value['id']}}" ><button type="button" class="btn btn-danger">Edit</button></a>	</td>
-					<td><a href="delete/{{$value['id']}}"> <button type="button" class="btn btn-success">Delete</button> </a></td>
-					<td>
-						<a href="/category/view/{{$value['id']}}">Links..</a>
-					
-					</td>
-				</tr>
-				 <?php } ?>
-			</tbody>
-		</table>
-		</div>
+        <table class="table table-hover">
+            <thead>
+
+            <tr>
+                <th>Category List</th>
+                <th>@if(Session::has('flash'))<span id="id">{{ Session::get('flash') }}@endif	</span></th>
+                <th></th>
+                <th></th>
+                <th><a href="new"
+                       style="border:1px solid black;padding:10px 8px;cursor: pointer;background: #2ab27b;color:white; ">Add
+                        Category</a></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Select</td>
+                <td>Id_Category</td>
+                <td>Category_name</td>
+                <td>Edit Category</td>
+                <td>Delete Category</td>
+                <td>View</td>
+            </tr>
+            <?php foreach ($category as  $value) {?>
+            <tr>
+                <td><input type="checkbox" name=""></td>
+                <td><?php echo $value['id'];    ?></td>
+                <td><b><?php echo $value['name']; ?></b></td>
+                <td><a href="edit/{{$value['id']}}">
+                        <button type="button" class="btn btn-danger">Edit</button>
+                    </a></td>
+                <td><a href="delete/{{$value['id']}}">
+                        <button type="button" class="btn btn-success">Delete</button>
+                    </a></td>
+                <td>
+                    <a href="/category/view/{{$value['slug']}}">Links..</a>
+
+                </td>
+            </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+    </div>
 @endsection

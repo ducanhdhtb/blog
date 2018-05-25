@@ -12,7 +12,6 @@
 */
 
 
-
 Auth::routes();
 
 Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@showPost']);
@@ -25,8 +24,8 @@ Route::post('user/loginPost', 'UserController@loginPostAction');
 
 // Route::get('post',  'Blog\PostController@listAction')->name('postIndex');
 // Show all posts 
-Route::get('post/list',  'Blog\PostController@listAction')->name('postList');
-Route::get('category/list/{id}',  'Blog\PostController@viewlist')->name('CategoryList');
+Route::get('post/list', 'Blog\PostController@listAction')->name('postList');
+Route::get('category/list/{id}', 'Blog\PostController@viewlist')->name('CategoryList');
 // Show  detail post with url ex: post/view/id/123 and /things-they-say
 Route::get('post/view/{slug}', 'Blog\PostController@viewAction')->name('postView');
 
